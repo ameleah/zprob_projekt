@@ -20,6 +20,7 @@ namespace bookreview.Models.BaseModels
 
         public DateTime UpdatedAt { get; private set; }
 
+        public List<Category> CategoryList { get; private set; }
 
         public Book(string name, Author author, DateTime releaseDate, string description)
         {
@@ -28,6 +29,7 @@ namespace bookreview.Models.BaseModels
             ReleaseDate = releaseDate;
             Description = description;
             CreatedAt = UpdatedAt = DateTime.Now;
+            CategoryList = new List<Category>();
         }
                 
     }
