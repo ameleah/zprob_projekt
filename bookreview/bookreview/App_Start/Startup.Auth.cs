@@ -58,11 +58,11 @@ namespace bookreview
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1072835772490-9a5ecqra79tjmjgkjbueohaqki2v40hm.apps.googleusercontent.com",
+                ClientSecret = "vInXvLbFD26c_dVkdo2qTUxc"
+            });
         }
     }
 }
