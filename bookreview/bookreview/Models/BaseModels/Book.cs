@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace bookreview.Models.BaseModels
 {
-
     public class Book
-    {       
+    {
+        [Key]
+        public int Id { get; private set; }
         public string Name { get; private set; }
 
         public Author Author { get; private set; }
@@ -21,6 +21,8 @@ namespace bookreview.Models.BaseModels
         public DateTime UpdatedAt { get; private set; }
 
         public List<Category> CategoryList { get; private set; }
+        public List<Review> ReviewList { get; private set; }
+        public List<Rate> RateList { get; private set; }
 
         public Book(string name, Author author, DateTime releaseDate, string description)
         {
@@ -30,6 +32,8 @@ namespace bookreview.Models.BaseModels
             Description = description;
             CreatedAt = UpdatedAt = DateTime.Now;
             CategoryList = new List<Category>();
+            ReviewList = new List<Review>();
+            RateList = new List<Rate>();
         }
                 
     }

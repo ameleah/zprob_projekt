@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using bookreview.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace bookreview.Models.BaseModels
 {
     public class Review
     {
+        [Key]
+        public int Id { get; private set; }
         public ApplicationUser User { get; private set; }
 
         public bool EntityType { get; private set; }
