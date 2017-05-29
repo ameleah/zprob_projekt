@@ -25,6 +25,7 @@ namespace bookreview
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/fontawesome-min.css",
                       "~/Content/site.css"));
         }
     }
