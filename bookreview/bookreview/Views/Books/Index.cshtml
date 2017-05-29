@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<bookreview.Models.BaseModels.Book>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista książek";
 }
 
-<h2>Index</h2>
+<h2>Książki</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<!--
 <table class="table">
     <tr>
         <th>
@@ -28,30 +29,35 @@
         </th>
         <th></th>
     </tr>
-
+-->
 @foreach (var item in Model) {
-    <tr>
-        <td>
+    <div class="item">
+        <div class="item-title">
             @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedAt)
-        </td>
+        </div>
+        <div class="item-body">
+            <div class="author">
+                @Html.DisplayFor(modelItem => item.Author.LastName) @Html.DisplayFor(modelItem => item.Author.FirstName) 
+            </div>
+            <div class="item-desc">
+                @Html.DisplayFor(modelItem => item.Description)
+            </div>
+        </div>        
+        <div class="item-footer">
+            [Miejsce na komentarze, like, share itp]
+        </div>
+    </div>
+
+ <!--
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
+        
     </tr>
-}
+
 
 </table>
+-->
+}

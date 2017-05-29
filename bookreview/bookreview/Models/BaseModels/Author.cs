@@ -39,5 +39,10 @@ namespace bookreview.Models.BaseModels
             RateList = new List<Rate>();
         }
 
+        public override string ToString()
+        {
+            return this.LastName + " " + this.FirstName;
+        }
+
     }
 }
