@@ -397,7 +397,6 @@
     <Compile Include="Models\BaseModels\Category.cs" />
     <Compile Include="Models\BaseModels\Rate.cs" />
     <Compile Include="Models\BaseModels\Review.cs" />
-    <Compile Include="Data\BookReviewContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
