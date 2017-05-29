@@ -396,6 +396,10 @@
     <Compile Include="Migrations\201705282211216_BaseModels.Designer.cs">
       <DependentUpon>201705282211216_BaseModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705292004026_AddDisplayedName.cs" />
+    <Compile Include="Migrations\201705292004026_AddDisplayedName.Designer.cs">
+      <DependentUpon>201705292004026_AddDisplayedName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -520,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705282211216_BaseModels.resx">
       <DependentUpon>201705282211216_BaseModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705292004026_AddDisplayedName.resx">
+      <DependentUpon>201705292004026_AddDisplayedName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
