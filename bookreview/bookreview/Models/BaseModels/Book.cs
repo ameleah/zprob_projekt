@@ -35,6 +35,11 @@ namespace bookreview.Models.BaseModels
             ReviewList = new List<Review>();
             RateList = new List<Rate>();
         }
+
+        public void AddCategory(Category cat)
+        {
+            this.CategoryList.Add(cat);
+        }
                 
     }
 }
