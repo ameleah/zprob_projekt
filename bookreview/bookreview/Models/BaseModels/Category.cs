@@ -16,7 +16,7 @@ namespace bookreview.Models.BaseModels
 
         public DateTime UpdatedAt { get; private set; }
 
-
+        public Category() { }
         public Category(string name)
         {
             Name = name;

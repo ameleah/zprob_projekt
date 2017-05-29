@@ -25,6 +25,7 @@ namespace bookreview.Models.BaseModels
         public List<Review> ReviewList { get; private set; }
         public List<Rate> RateList { get; private set; }
 
+        public Author() { }
 
         public Author(string firstName, string lastName, DateTime birthDate, string bio)
         {

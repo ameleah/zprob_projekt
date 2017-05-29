@@ -19,7 +19,7 @@ namespace bookreview.Models.BaseModels
 
         public DateTime UpdatedAt { get; private set; }
 
-
+        public Rate() { }
         public Rate(ApplicationUser user, bool entityType, int value, Object entity)
         {
             User = user;

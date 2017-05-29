@@ -19,7 +19,7 @@ namespace bookreview.Models.BaseModels
 
         public DateTime UpdatedAt { get; private set; }
 
-
+        public Review() { }
         public Review(ApplicationUser user, bool entityType, Object entity, string text)
         {
             User = user;

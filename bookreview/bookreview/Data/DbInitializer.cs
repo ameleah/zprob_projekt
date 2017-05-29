@@ -53,14 +53,14 @@ namespace bookreview.Data
                 new Book("Pani Jeziora", authors[2], new DateTime(1999, 01, 01), ""),
             };
             books[0].AddCategory(categories[0]);
-            books[0].AddCategory(categories[0]);
-            books[0].AddCategory(categories[0]);
-            books[1].AddCategory(categories[1]);
-            books[1].AddCategory(categories[1]);
-            books[1].AddCategory(categories[1]);
-            books[2].AddCategory(categories[2]);
-            books[2].AddCategory(categories[2]);
-            books[2].AddCategory(categories[2]);
+            books[1].AddCategory(categories[0]);
+            books[2].AddCategory(categories[0]);
+            books[3].AddCategory(categories[1]);
+            books[4].AddCategory(categories[1]);
+            books[5].AddCategory(categories[1]);
+            books[6].AddCategory(categories[2]);
+            books[7].AddCategory(categories[2]);
+            books[8].AddCategory(categories[2]);
             foreach (Book b in books)
             {
                 context.Books.Add(b);

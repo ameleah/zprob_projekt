@@ -24,6 +24,7 @@ namespace bookreview.Models.BaseModels
         public List<Review> ReviewList { get; private set; }
         public List<Rate> RateList { get; private set; }
 
+        public Book() { }
         public Book(string name, Author author, DateTime releaseDate, string description)
         {
             Name = name;
