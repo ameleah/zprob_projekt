@@ -33,6 +33,9 @@ namespace bookreview.Models.BaseModels
         public Book() { }
         public Book(string name, Author author, DateTime releaseDate, string description)
         {
+            if (name == null) throw new Exception("Pole nazwa nie może być puste");
+            if (author == null) throw new Exception("Wybierz autora");
+
             Name = name;
             Author = author;
             ReleaseDate = releaseDate;
@@ -50,7 +53,7 @@ namespace bookreview.Models.BaseModels
 
         public string ShortText()
         {
-            return (Truncate(Description, 50));
+            return (Truncate(Description, 250));
         }
 
         public static string Truncate(string value, int maxChars)

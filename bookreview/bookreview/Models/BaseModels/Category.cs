@@ -21,6 +21,7 @@ namespace bookreview.Models.BaseModels
         public Category() { }
         public Category(string name)
         {
+            if (name == null) throw new Exception("Pole nazwa nie może być puste");
             Name = name;
             BookList = new List<Book>();
             CreatedAt = UpdatedAt = DateTime.Now;

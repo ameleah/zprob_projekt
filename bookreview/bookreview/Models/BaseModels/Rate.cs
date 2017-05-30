@@ -22,6 +22,10 @@ namespace bookreview.Models.BaseModels
         public Rate() { }
         public Rate(ApplicationUser user, bool entityType, int value, Object entity)
         {
+            if (user == null) throw new Exception("Nie wybrano użytkownika");
+            if (value <= 0 || value >10) throw new Exception("Ocena musi być z zakresu 1-10");
+            if (entity == null) throw new Exception("Nie wybrano obiektu do oceny");
+
             User = user;
             EntityType = entityType;
             Value = value;
