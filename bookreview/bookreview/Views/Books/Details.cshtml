@@ -1,56 +1,17 @@
 ﻿@model bookreview.Models.BaseModels.Book
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły - "+Model.Name;
 }
 
-<h2>Details</h2>
+<h2>Szczegóły</h2>
 
 <div>
-    <h4>Book</h4>
+    <h3>@Html.DisplayFor(model => model.Name)</h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReleaseDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
-
-    </dl>
+    Autor: @(Model.Author.ToString())<br />
+    Rok wydania: @(Model.ReleaseDate.ToString("yyyy")) <br />
+    @Html.DisplayFor(model => model.Description) <br />
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

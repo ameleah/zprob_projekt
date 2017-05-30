@@ -28,7 +28,8 @@ namespace bookreview.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            var books = db.Books.Include(b => b.Author);
+            Book book = books.Where(b => b.Id == id).FirstOrDefault();
             if (book == null)
             {
                 return HttpNotFound();
