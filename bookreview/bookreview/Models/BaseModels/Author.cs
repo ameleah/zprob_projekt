@@ -9,12 +9,18 @@ namespace bookreview.Models.BaseModels
     {
         [Key]
         public int Id { get; private set; }
+
+        [Required]
+        [StringLength(60, MinimumLength = 3)]
         public string FirstName { get; private set; }
 
+        [Required]
+        [StringLength(60, MinimumLength = 3)]
         public string LastName { get; private set; }
 
+        [Required]
         public DateTime BirthDate { get; private set; }
-
+        
         public string Bio { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
@@ -41,7 +47,7 @@ namespace bookreview.Models.BaseModels
 
         public override string ToString()
         {
-            return this.LastName + " " + this.FirstName;
+            return LastName + ", " + FirstName;
         }
 
     }

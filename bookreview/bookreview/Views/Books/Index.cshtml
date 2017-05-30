@@ -4,60 +4,36 @@
     ViewBag.Title = "Lista książek";
 }
 
-<h2>Książki</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<!--
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>
-        <th></th>
-    </tr>
--->
-@foreach (var item in Model) {
-    <div class="item">
-        <div class="item-title">
-            @Html.DisplayFor(modelItem => item.Name)
-        </div>
-        <div class="item-body">
-            <div class="author">
-                @Html.DisplayFor(modelItem => item.Author.LastName) @Html.DisplayFor(modelItem => item.Author.FirstName) 
-            </div>
-            <div class="item-desc">
-                @Html.DisplayFor(modelItem => item.Description)
-            </div>
-        </div>        
-        <div class="item-footer">
-            [Miejsce na komentarze, like, share itp]
-        </div>
+<div class="col-xs-12">
+    <div class="subsite-header">
+        <h2>Książki</h2>
+        <p class="options">
+            @Html.ActionLink("Dodaj", "Create")
+        </p>
     </div>
+</div>
+<div class="col-xs-12">
+    @foreach (var item in Model)
+    {
+        <div class="item-wrapper col-xs-12 col-md-4">
+            <div class="item">
+                <div class="item-title">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </div>
+                <div class="item-body">
+                    <div class="author">
+                        @Html.DisplayFor(modelItem => item.Author.LastName), @Html.DisplayFor(modelItem => item.Author.FirstName)
+                    </div>
+                    <div class="item-desc">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </div>
+                </div>
+                <div class="item-footer">
+                    [Miejsce na komentarze, like, share itp]
+                </div>
+            </div>
+        </div>
 
- <!--
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        
-    </tr>
 
-
-</table>
--->
-}
+    }
+</div>

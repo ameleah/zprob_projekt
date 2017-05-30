@@ -8,14 +8,20 @@ namespace bookreview.Models.BaseModels
     {
         [Key]
         public int Id { get; private set; }
+
+        [StringLength(60, MinimumLength = 3)]
+        [Required]
         public string Name { get; private set; }
 
+        [Required]
         public Author Author { get; private set; }
 
+
+        [Required]
         public DateTime ReleaseDate { get; private set; }
 
         public string Description { get; private set; }
-
+        
         public DateTime CreatedAt { get; private set; }
 
         public DateTime UpdatedAt { get; private set; }

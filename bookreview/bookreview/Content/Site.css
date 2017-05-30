@@ -24,19 +24,19 @@ textarea {
 }
 
 .item {
-    display: block;
-    width: 300px;
+    position: relative;
+    display: inline-block;
     height: 400px;
-    margin: 25px;
     border-radius: 10px;
     border: 1px solid black;
-    position: relative;
+    padding: 0;
+    width: 100%;
 }
 .item .item-title {
-    position: absolute;
     top: 0;
     left: 0;
     background-color: #B7B6C1;
+    display: block;
     width: 100%;    
     padding: 25px;
     border-radius: 10px 10px 0 0;
@@ -48,6 +48,7 @@ textarea {
 .item .item-footer {
     position: absolute;
     bottom: 0;
+    display:block;
     left: 0;
     background-color: #B7B6C1;
     width: 100%;    
@@ -59,11 +60,59 @@ textarea {
 }
 
 .item .item-body {
-    position: absolute;
+    display: block;
     width: 100%;
-    top: 25%;
-    bottom: 25%;
-    padding: 5px 25px;
+    height: auto;
     overflow-y: hidden;
     text-align: justify;
+}
+
+.item .item-body .author {
+    position: relative;
+    padding:  10px 25px 10px 25px;
+    background-color: #eeeeee;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.item .item-body .item-desc {
+    padding: 10px 25px;
+}
+
+.subsite-header {
+    width: 100%;
+    padding: 25px 50px;
+}
+
+.subsite-header h2 {
+    display: inline-block;
+    width: auto;
+    width: 70%;
+    min-height: 50px;
+    margin: 0;
+}
+.subsite-header .options {
+    display: inline-block;
+    float: right;
+    width: 30%;
+    min-height: 50px;   
+    text-align: right;
+    padding: 15px;
+}
+
+.item-wrapper {
+    padding: 25px;
+}
+
+.form-input {
+    max-width: 100%;
+}
+
+.form-row {
+    padding: 20px;
+}
+
+.control-label {
+    text-align: right;
+    font-weight: bold;
 }

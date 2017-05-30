@@ -21,11 +21,13 @@ namespace bookreview
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/bootstrap-datepicker.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/fontawesome-min.css",
+                      "~/Content/bootstrap-datepicker.min.css",
                       "~/Content/site.css"));
         }
     }
