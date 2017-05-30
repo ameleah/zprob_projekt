@@ -29,7 +29,7 @@
                     Autor
                 </div>
                 <div class="col-md-9 col-xs-10">
-                    @Html.DropDownListFor(model => model.Author, ViewBag.Authors as SelectList, new { @class = "form-control form-input" })
+                    @Html.DropDownListFor(model => model.Author.Id, ViewBag.Authors as SelectList, new { @class = "form-control form-input" })
                 </div>
                 <div class="col-md-1 col-xs-2">@Html.ActionLink("Dodaj autora", "Create", "Authors")</div>
             </div>
