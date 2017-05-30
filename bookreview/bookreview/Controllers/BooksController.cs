@@ -53,11 +53,18 @@ namespace bookreview.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,ReleaseDate,Description,CreatedAt,UpdatedAt")] Book book)
         {
+            var authors = db.Authors.ToList();
+            SelectList authorsList = new SelectList((from a in authors select new { Id = a.Id, FullName = a.LastName + ", " + a.FirstName }), "Id", "FullName");
+            ViewBag.Authors = authorsList;
+
             if (ModelState.IsValid)
-            {
+            {                
                 db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            } else
+            {
+
             }
 
             return View(book);
