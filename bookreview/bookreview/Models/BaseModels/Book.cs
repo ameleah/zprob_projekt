@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bookreview.Models.BaseModels
 {
@@ -13,11 +14,16 @@ namespace bookreview.Models.BaseModels
         [Required]
         public string Name { get; private set; }
 
+        public int Author_Id { get; private set; }
         [Required]
-        public Author Author { get; private set; }
+        
+        [ForeignKey("Author_Id")]
+        public virtual Author Author { get; private set; }
 
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; private set; }
 
         public string Description { get; private set; }
@@ -29,6 +35,7 @@ namespace bookreview.Models.BaseModels
         public List<Category> CategoryList { get; private set; }
         public List<Review> ReviewList { get; private set; }
         public List<Rate> RateList { get; private set; }
+        
 
         public Book() { }
         public Book(string name, Author author, DateTime releaseDate, string description)

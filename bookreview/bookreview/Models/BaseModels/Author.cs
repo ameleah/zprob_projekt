@@ -27,7 +27,7 @@ namespace bookreview.Models.BaseModels
 
         public DateTime UpdatedAt { get; private set; }
 
-        public List<Book> BookList { get; private set; }
+        public virtual ICollection<Book> BookList { get; private set; }
         public List<Review> ReviewList { get; private set; }
         public List<Rate> RateList { get; private set; }
 
