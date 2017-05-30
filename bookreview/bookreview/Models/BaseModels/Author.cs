@@ -47,9 +47,16 @@ namespace bookreview.Models.BaseModels
             BookList = new List<Book>();
             ReviewList = new List<Review>();
             RateList = new List<Rate>();
+        }
 
-            
+        public string ShortText()
+        {
+            return (Truncate(Bio, 250));
+        }
 
+        public static string Truncate(string value, int maxChars)
+        {
+            return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
         }
 
         public override string ToString()
