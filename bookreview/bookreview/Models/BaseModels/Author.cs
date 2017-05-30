@@ -35,6 +35,10 @@ namespace bookreview.Models.BaseModels
 
         public Author(string firstName, string lastName, DateTime birthDate, string bio)
         {
+            if (firstName == null) throw new Exception("Pole imię nie może być puste");
+            if (lastName == null) throw new Exception("Pole nazwisko nie może być puste");
+            if (birthDate > DateTime.Now) throw new Exception("Podaj poprawną datę");
+
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;
@@ -43,6 +47,9 @@ namespace bookreview.Models.BaseModels
             BookList = new List<Book>();
             ReviewList = new List<Review>();
             RateList = new List<Rate>();
+
+            
+
         }
 
         public override string ToString()

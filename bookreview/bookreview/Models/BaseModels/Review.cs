@@ -22,6 +22,9 @@ namespace bookreview.Models.BaseModels
         public Review() { }
         public Review(ApplicationUser user, bool entityType, Object entity, string text)
         {
+            if (user == null) throw new Exception("Nie wybrano użytkownika");
+            if (text == null) throw new Exception("Recenzja musi mieć treść");
+
             User = user;
             EntityType = entityType;
             Entity = entity;
