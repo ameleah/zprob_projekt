@@ -47,6 +47,15 @@ namespace bookreview.Models.BaseModels
         {
             this.CategoryList.Add(cat);
         }
-                
+
+        public string ShortText()
+        {
+            return (Truncate(Description, 50));
+        }
+
+        public static string Truncate(string value, int maxChars)
+        {
+            return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
+        }
     }
 }
