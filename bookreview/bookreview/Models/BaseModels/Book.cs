@@ -10,19 +10,19 @@ namespace bookreview.Models.BaseModels
         [Key]
         public int Id { get; private set; }
 
-        [StringLength(60, MinimumLength = 3)]
-        [Required]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "Zła długość nazwy")]
+        [Required(ErrorMessage = "Pole wymagane")]
         public string Name { get; private set; }
 
         public int Author_Id { get; private set; }
-        [Required]
+        [Required(ErrorMessage = "Pole wymagane")]
         
         [ForeignKey("Author_Id")]
         public virtual Author Author { get; private set; }
 
 
-        [Required]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [Required(ErrorMessage = "Pole wymagane")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; private set; }
 
