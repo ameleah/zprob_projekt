@@ -18,7 +18,7 @@ namespace bookreview.Controllers
         // GET: Books
         public ActionResult Index()
         {
-            return View(db.Books.ToList());
+            return View(db.Books.Include(b => b.Author).ToList());
         }
 
         // GET: Books/Details/5
@@ -39,6 +39,9 @@ namespace bookreview.Controllers
         // GET: Books/Create
         public ActionResult Create()
         {
+            var authors = db.Authors.ToList();
+            SelectList authorsList = new SelectList((from a in authors select new { Id = a.Id, FullName = a.LastName + ", " + a.FirstName }), "Id", "FullName");
+            ViewBag.Authors = authorsList;
             return View();
         }
 

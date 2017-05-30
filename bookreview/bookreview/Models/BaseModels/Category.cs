@@ -8,6 +8,8 @@ namespace bookreview.Models.BaseModels
     {
         [Key]
         public int Id { get; private set; }
+
+        [Required]
         public string Name { get; private set; }
 
         public List<Book> BookList { get; private set; }
