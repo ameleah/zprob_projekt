@@ -28,7 +28,6 @@ namespace bookreview.Models.BaseModels
         public DateTime UpdatedAt { get; private set; }
 
         public virtual ICollection<Book> BookList { get; private set; }
-        public List<Review> ReviewList { get; private set; }
         public List<Rate> RateList { get; private set; }
 
         public Author() { }
@@ -45,7 +44,6 @@ namespace bookreview.Models.BaseModels
             Bio = bio;
             CreatedAt = UpdatedAt = DateTime.Now;
             BookList = new List<Book>();
-            ReviewList = new List<Review>();
             RateList = new List<Rate>();
         }
 
@@ -71,6 +69,7 @@ namespace bookreview.Models.BaseModels
 
         public float GetAverageOfRates()
         {
+            if (RateList.Count == 0) { return 0; }
             float sum = 0;
             foreach (Rate r in RateList)
             {

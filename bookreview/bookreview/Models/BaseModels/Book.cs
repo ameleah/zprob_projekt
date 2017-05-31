@@ -33,7 +33,6 @@ namespace bookreview.Models.BaseModels
         public DateTime UpdatedAt { get; private set; }
 
         public List<Category> CategoryList { get; private set; }
-        public List<Review> ReviewList { get; private set; }
         public List<Rate> RateList { get; private set; }
         
 
@@ -49,7 +48,6 @@ namespace bookreview.Models.BaseModels
             Description = description;
             CreatedAt = UpdatedAt = DateTime.Now;
             CategoryList = new List<Category>();
-            ReviewList = new List<Review>();
             RateList = new List<Rate>();
         }
 
@@ -66,6 +64,23 @@ namespace bookreview.Models.BaseModels
         public static string Truncate(string value, int maxChars)
         {
             return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
+        }
+
+
+        public int GetNumberOfRates()
+        {
+            return RateList.Count;
+        }
+
+        public float GetAverageOfRates()
+        {
+            if (RateList.Count == 0) { return 0; }
+            float sum = 0;
+            foreach (Rate r in RateList)
+            {
+                sum += r.Value;
+            }
+            return sum / RateList.Count;
         }
     }
 }

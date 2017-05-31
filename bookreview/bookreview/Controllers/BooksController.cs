@@ -28,7 +28,7 @@ namespace bookreview.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var books = db.Books.Include(b => b.Author);
+            var books = db.Books.Include(b => b.Author).Include(b => b.CategoryList).Include(b => b.RateList);
             Book book = books.Where(b => b.Id == id).FirstOrDefault();
             if (book == null)
             {
@@ -41,8 +41,11 @@ namespace bookreview.Controllers
         public ActionResult Create()
         {
             var authors = db.Authors.ToList();
+            var categories = db.Categories.ToList();
             SelectList authorsList = new SelectList((from a in authors select new { Id = a.Id, FullName = a.LastName + ", " + a.FirstName }), "Id", "FullName");
+            MultiSelectList categoryList = new MultiSelectList(categories, "Id", "Name");
             ViewBag.Authors = authorsList;
+            ViewBag.Categories = categoryList;
             return View();
         }
 
@@ -51,9 +54,10 @@ namespace bookreview.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(string Name, string Author_Id, string ReleaseDate, string Description)
+        public ActionResult Create(string Name, string Author_Id, string ReleaseDate, string Description, string[] CategoryList)
         {
             var authors = db.Authors;
+            var categories = db.Categories;
             if (Name != null && Author_Id != null && ReleaseDate != null)
             {
                 Author author = authors.Find(Int32.Parse(Author_Id));
@@ -65,80 +69,23 @@ namespace bookreview.Controllers
                 }
                 DateTime releaseDate = new DateTime(dateInt[2], dateInt[0], dateInt[1]);
                 Book book = new Book(Name, author, releaseDate, Description);
+                foreach (string idc in CategoryList)
+                {
+                    Category cat = categories.Find(Int32.Parse(idc));
+                    book.AddCategory(cat);
+
+                }
                 db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            } 
+            }
             SelectList authorsList = new SelectList((from a in authors.ToList() select new { Id = a.Id, FullName = a.LastName + ", " + a.FirstName }), "Id", "FullName");
+            MultiSelectList categoryList = new MultiSelectList(categories.ToList(), "Id", "Name");
+            ViewBag.Authors = authorsList;
+            ViewBag.Categories = categoryList;
             ViewBag.Authors = authorsList;
 
             return View();
-        }
-
-        // GET: Books/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Book book = db.Books.Find(id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book);
-        }
-
-        // POST: Books/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,ReleaseDate,Description,CreatedAt,UpdatedAt")] Book book)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(book).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(book);
-        }
-
-        // GET: Books/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Book book = db.Books.Find(id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book);
-        }
-
-        // POST: Books/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Book book = db.Books.Find(id);
-            db.Books.Remove(book);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

@@ -21,12 +21,11 @@
 {
     if (!bookreview.Models.ApplicationUser.HasRated(Model))
     {
-        @Html.Partial("~/Views/Rates/Create.cshtml", new bookreview.Models.BaseModels.Rate(), new ViewDataDictionary { { "type", false }, { "id", Model.Id.ToString() } })
+        @Html.Partial("~/Views/Rates/Create.cshtml", new bookreview.Models.BaseModels.Rate(), new ViewDataDictionary{ { "type", false }, { "id", Model.Id.ToString() } })
     }
 
 }
 
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
+<p class="btn btn-default">
     @Html.ActionLink("Wróć do listy", "Index")
 </p>

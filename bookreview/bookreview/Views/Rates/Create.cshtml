@@ -9,8 +9,8 @@
         <h4>Oceń!</h4>
         <hr />
         <div class="form-group">
-            @Html.HiddenFor(model => model.EntityType, new { value = ViewData["type"] } ) 
-            @Html.HiddenFor(model => model.EntityId, new { value = ViewData["id"] } )
+            @Html.HiddenFor(model => model.EntityType, new { Value = ViewData["type"] } ) 
+            @Html.HiddenFor(model => model.EntityId, new { Value = ViewData["id"] } )
             1  @Html.RadioButtonFor(model => model.Value, "1")
             2  @Html.RadioButtonFor(model => model.Value, "2")
             3  @Html.RadioButtonFor(model => model.Value, "3")

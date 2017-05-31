@@ -116,3 +116,27 @@ textarea {
     text-align: right;
     font-weight: bold;
 }
+
+.button {
+    display: inline-block;
+    position: relative;
+    background-color: #818a95;
+    color: black;
+    padding: 5px ;
+    border: 1px solid black;
+    border-radius: 3px;
+    min-width: 150px;
+    text-align: center;
+    margin: 0 10px 0 10px;
+
+}
+.button a {
+    color: black;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.button a:hover {
+    text-decoration: none;
+    letter-spacing: 2px;
+}

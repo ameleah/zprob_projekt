@@ -9,11 +9,37 @@
 <div>
     <h3>@Html.DisplayFor(model => model.Name)</h3>
     <hr />
-    Autor: @(Model.Author.ToString())<br />
-    Rok wydania: @(Model.ReleaseDate.ToString("yyyy")) <br />
+    <b>Autor:</b> @(Model.Author.ToString())<br />
+    <b>Rok wydania:</b> @(Model.ReleaseDate.ToString("yyyy")) <br />
+    <b>Kategorie:</b> 
+    @foreach (bookreview.Models.BaseModels.Category cat in Model.CategoryList)
+    {
+        @(cat.Name);
+        if (cat != Model.CategoryList.Last())
+        {
+            @(", ");
+        }
+        
+    }
+    <br />
     @Html.DisplayFor(model => model.Description) <br />
+    <hr />
+    Ilość ocen: @Model.GetNumberOfRates() <br />
+    Średnia ocen: @Model.GetAverageOfRates()
 </div>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
+<p class="btn btn-default">
     @Html.ActionLink("Wróć do listy", "Index")
 </p>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (!bookreview.Models.ApplicationUser.HasRated(Model))
+    {
+        @Html.Partial("~/Views/Rates/Create.cshtml", new bookreview.Models.BaseModels.Rate(), new ViewDataDictionary { { "type", "1" }, { "id", Model.Id } })
+    }
+    else
+    {
+        @("Już oceniłeś tą książkę.");
+    }
+
+}

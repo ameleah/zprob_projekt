@@ -60,7 +60,7 @@
                     Kategorie
                 </div>
                 <div class="col-md-10">
-
+                    @Html.ListBoxFor(model => model.CategoryList, ViewBag.Categories as MultiSelectList, new { @class = "form-control form-input" })
                 </div>
             </div>
 
