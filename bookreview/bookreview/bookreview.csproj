@@ -404,6 +404,14 @@
     <Compile Include="Migrations\201705301737261_validation.Designer.cs">
       <DependentUpon>201705301737261_validation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705302144167_test.cs" />
+    <Compile Include="Migrations\201705302144167_test.Designer.cs">
+      <DependentUpon>201705302144167_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705302338332_sth.cs" />
+    <Compile Include="Migrations\201705302338332_sth.Designer.cs">
+      <DependentUpon>201705302338332_sth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -580,16 +588,13 @@
     <Content Include="Views\Books\Details.cshtml" />
     <Content Include="Views\Books\Edit.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
-    <Content Include="Views\Rates\Create.cshtml" />
-    <Content Include="Views\Rates\Delete.cshtml" />
-    <Content Include="Views\Rates\Details.cshtml" />
-    <Content Include="Views\Rates\Edit.cshtml" />
-    <Content Include="Views\Rates\Index.cshtml" />
     <Content Include="Views\Reviews\Create.cshtml" />
     <Content Include="Views\Reviews\Delete.cshtml" />
     <Content Include="Views\Reviews\Details.cshtml" />
     <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
+    <Content Include="Views\Books\Create.cshtml" />
+    <Content Include="Views\Rates\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -617,6 +622,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705301737261_validation.resx">
       <DependentUpon>201705301737261_validation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705302144167_test.resx">
+      <DependentUpon>201705302144167_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705302338332_sth.resx">
+      <DependentUpon>201705302338332_sth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

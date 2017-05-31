@@ -22,5 +22,6 @@ namespace bookreview.Models
             return new ApplicationDbContext();
 
         }
+
     }
 }

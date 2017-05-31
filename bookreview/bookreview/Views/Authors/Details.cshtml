@@ -1,7 +1,7 @@
 ﻿@model bookreview.Models.BaseModels.Author
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.ToString();
 }
 
 <h2>Szczegóły</h2>
@@ -9,11 +9,23 @@
 <div>
     <h4>@(Model.ToString())</h4>
     <hr />
-        Imię: @(Model.FirstName.ToString()) <br />
-        Nazwisko: @(Model.LastName.ToString()) <br />
-        Data urodzenia: @(Model.BirthDate.ToString("yyyy")) <br />
-        Biografia: @(Model.Bio.ToString()) <br />
+    Imię: @(Model.FirstName.ToString()) <br />
+    Nazwisko: @(Model.LastName.ToString()) <br />
+    Data urodzenia: @(Model.BirthDate.ToString("yyyy")) <br />
+    Biografia: @(Model.Bio.ToString()) <br />
+
+    Liczba ocen: @Model.GetNumberOfRates() <br />
+    Średnia ocen: @Model.GetAverageOfRates()
 </div>
+@if (User.Identity.IsAuthenticated)
+{
+    if (!bookreview.Models.ApplicationUser.HasRated(Model))
+    {
+        @Html.Partial("~/Views/Rates/Create.cshtml", new bookreview.Models.BaseModels.Rate(), new ViewDataDictionary { { "type", false }, { "id", Model.Id.ToString() } })
+    }
+
+}
+
 <p>
     @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Wróć do listy", "Index")

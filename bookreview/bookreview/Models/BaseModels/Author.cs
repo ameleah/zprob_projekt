@@ -20,7 +20,7 @@ namespace bookreview.Models.BaseModels
 
         [Required]
         public DateTime BirthDate { get; private set; }
-        
+
         public string Bio { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
@@ -62,6 +62,21 @@ namespace bookreview.Models.BaseModels
         public override string ToString()
         {
             return LastName + ", " + FirstName;
+        }
+
+        public int GetNumberOfRates()
+        {
+            return RateList.Count;
+        }
+
+        public float GetAverageOfRates()
+        {
+            float sum = 0;
+            foreach (Rate r in RateList)
+            {
+                sum += r.Value;
+            }
+            return sum / RateList.Count;
         }
 
     }

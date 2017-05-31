@@ -1,31 +1,32 @@
 ﻿@model bookreview.Models.BaseModels.Rate
 
-@{
-    ViewBag.Title = "Create";
-}
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Rates"))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Rate</h4>
+        <h4>Oceń!</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            @Html.HiddenFor(model => model.EntityType, new { value = ViewData["type"] } ) 
+            @Html.HiddenFor(model => model.EntityId, new { value = ViewData["id"] } )
+            1  @Html.RadioButtonFor(model => model.Value, "1")
+            2  @Html.RadioButtonFor(model => model.Value, "2")
+            3  @Html.RadioButtonFor(model => model.Value, "3")
+            4  @Html.RadioButtonFor(model => model.Value, "4")
+            5  @Html.RadioButtonFor(model => model.Value, "5")
+            6  @Html.RadioButtonFor(model => model.Value, "6")
+            7  @Html.RadioButtonFor(model => model.Value, "7")
+            8  @Html.RadioButtonFor(model => model.Value, "8")
+            9  @Html.RadioButtonFor(model => model.Value, "9")
+            10 @Html.RadioButtonFor(model => model.Value, "10")
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Dodaj ocenę" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

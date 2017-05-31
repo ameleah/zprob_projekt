@@ -1,10 +1,10 @@
 ﻿@model bookreview.Models.BaseModels.Author
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Dodaj autora";
 }
 
-<h2>Create</h2>
+<h2>Dodaj autora</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,12 +12,48 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Author</h4>
+        <h4>Autor</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            <div class="row form-row">
+                <div class="col-md-2 control-label">
+                    Imię
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control form-input" })
+                </div>
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+            <div class="row form-row">
+                <div class="col-md-2 control-label">
+                    Nazwisko
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control form-input" })
+                </div>
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+            <div class="row form-row">
+                <div class="col-md-2 control-label">
+                    Data urodzenia
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BirthDate, new { @class = "form-control form-input datepicker" })
+                </div>
+                @Html.ValidationMessageFor(model => model.BirthDate)
+            </div>
+            <div class="row form-row">
+                <div class="col-md-2 control-label">
+                    Biografia
+                </div>
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Bio, new { @class = "form-control form-input" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Bio)
+            </div>
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Dodaj" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -29,4 +65,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    $('.datepicker').datepicker();
+    </script>
 }

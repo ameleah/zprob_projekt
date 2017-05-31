@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using bookreview.Models;
 using bookreview.Models.BaseModels;
+using Microsoft.AspNet.Identity;
+using System.Web.Routing;
 
 namespace bookreview.Controllers
 {
@@ -47,16 +46,30 @@ namespace bookreview.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EntityType,Value,CreatedAt,UpdatedAt")] Rate rate)
+        public ActionResult Create(string EntityType, string EntityId, string Value)
         {
-            if (ModelState.IsValid)
+            if (EntityType != null && EntityId != null && Value != null)
             {
+                bool entityType = EntityType.ToLower() == "true";
+                int entityId = Int32.Parse(EntityId);
+                int val = Int32.Parse(Value);
+                Rate rate;
+                if (entityType)
+                {
+                    Book book = db.Books.Find(entityId);
+                    rate = new Rate(db.Users.Find(User.Identity.GetUserId()), entityType, val, book);
+                }
+                else
+                {
+                    Author author = db.Authors.Find(entityId);
+                    rate = new Rate(db.Users.Find(User.Identity.GetUserId()), entityType, val, author);
+                }
                 db.Rates.Add(rate);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", entityType ? "Books" : "Authors", new RouteValueDictionary { { "Id", entityId } });
             }
 
-            return View(rate);
+            return View();
         }
 
         // GET: Rates/Edit/5

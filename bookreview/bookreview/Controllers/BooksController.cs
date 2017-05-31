@@ -51,23 +51,28 @@ namespace bookreview.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,ReleaseDate,Description,CreatedAt,UpdatedAt")] Book book)
+        public ActionResult Create(string Name, string Author_Id, string ReleaseDate, string Description)
         {
-            var authors = db.Authors.ToList();
-            SelectList authorsList = new SelectList((from a in authors select new { Id = a.Id, FullName = a.LastName + ", " + a.FirstName }), "Id", "FullName");
-            ViewBag.Authors = authorsList;
-
-            if (ModelState.IsValid)
-            {                
+            var authors = db.Authors;
+            if (Name != null && Author_Id != null && ReleaseDate != null)
+            {
+                Author author = authors.Find(Int32.Parse(Author_Id));
+                string[] dateString = ReleaseDate.Split('/');
+                int[] dateInt = new int[3];
+                for (int i = 0; i < 3; i++)
+                {
+                    dateInt[i] = Int32.Parse(dateString[i]);
+                }
+                DateTime releaseDate = new DateTime(dateInt[2], dateInt[0], dateInt[1]);
+                Book book = new Book(Name, author, releaseDate, Description);
                 db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            } else
-            {
+            } 
+            SelectList authorsList = new SelectList((from a in authors.ToList() select new { Id = a.Id, FullName = a.LastName + ", " + a.FirstName }), "Id", "FullName");
+            ViewBag.Authors = authorsList;
 
-            }
-
-            return View(book);
+            return View();
         }
 
         // GET: Books/Edit/5

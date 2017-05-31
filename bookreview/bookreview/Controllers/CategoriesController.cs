@@ -47,9 +47,10 @@ namespace bookreview.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,CreatedAt,UpdatedAt")] Category category)
+        public ActionResult Create(string Name)
         {
-            if (ModelState.IsValid)
+            Category category = new Category(Name);
+            if (Name != null)
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
