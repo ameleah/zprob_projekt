@@ -580,15 +580,13 @@
     <Content Include="Views\Authors\Details.cshtml" />
     <Content Include="Views\Authors\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Books\Details.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Rates\Create.cshtml" />
     <Content Include="Views\Books\Pdf.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
