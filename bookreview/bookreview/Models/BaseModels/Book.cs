@@ -36,7 +36,11 @@ namespace bookreview.Models.BaseModels
         public List<Rate> RateList { get; private set; }
         
 
-        public Book() { }
+        public Book()
+        {
+            CategoryList = new List<Category>();
+            RateList = new List<Rate>();
+        }
         public Book(string name, Author author, DateTime releaseDate, string description)
         {
             if (name == null) throw new Exception("Pole nazwa nie może być puste");

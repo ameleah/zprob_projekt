@@ -1,0 +1,68 @@
+﻿@model IEnumerable<bookreview.Models.BaseModels.Book>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body style="font-family: 'Times New Roman', Times, serif", font-size: 12px;">
+    <h2>Lista książek</h2>
+
+    <table class="table" style="border: 1px solid black; border-collapse: collapse;">
+        <tr>
+            <th>
+                Autor
+            </th>
+            <th>
+                Tytuł
+            </th>
+            <th>
+                Rok wydania
+            </th>
+            <th>
+                Opis
+            </th>
+            <th>
+                Kategorie
+            </th>
+            <th>
+                Średnia ocena
+            </th>
+        </tr>
+
+        @foreach (bookreview.Models.BaseModels.Book item in Model)
+        {
+            <tr>
+                <td>
+                    @(item.Author.ToString())
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @item.ReleaseDate.ToString("yyyy")
+                </td>
+                <td>
+                    @item.ShortText()
+                </td>
+                <td>
+                    @if (item.CategoryList.Count > 0)
+                    {
+                        foreach (bookreview.Models.BaseModels.Category c in item.CategoryList)
+                            {
+                                    @(c.Name)
+                                    if (c != item.CategoryList.Last())
+                                    { @(", ")}
+                            }
+                    }
+                    
+                </td>
+                <td>
+                    @item.GetAverageOfRates()
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
+
+

@@ -588,6 +588,7 @@
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Rates\Create.cshtml" />
+    <Content Include="Views\Books\Pdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
