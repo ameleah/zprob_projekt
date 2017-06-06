@@ -33,7 +33,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    if (!bookreview.Models.ApplicationUser.HasRated(Model))
+    if (!bookreview.Models.ApplicationUser.HasRated(Model, true))
     {
         @Html.Partial("~/Views/Rates/Create.cshtml", new bookreview.Models.BaseModels.Rate(), new ViewDataDictionary { { "type", "1" }, { "id", Model.Id } })
     }

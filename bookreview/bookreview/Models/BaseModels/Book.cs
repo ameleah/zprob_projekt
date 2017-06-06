@@ -5,10 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bookreview.Models.BaseModels
 {
-    public class Book
+    public class Book : Rateable
     {
-        [Key]
-        public int Id { get; private set; }
 
         [StringLength(60, MinimumLength = 3, ErrorMessage = "Zła długość nazwy")]
         [Required(ErrorMessage = "Pole wymagane")]
@@ -33,9 +31,7 @@ namespace bookreview.Models.BaseModels
         public DateTime UpdatedAt { get; private set; }
 
         public List<Category> CategoryList { get; private set; }
-        public List<Rate> RateList { get; private set; }
         
-
         public Book()
         {
             CategoryList = new List<Category>();
@@ -69,22 +65,6 @@ namespace bookreview.Models.BaseModels
         {
             return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
         }
-
-
-        public int GetNumberOfRates()
-        {
-            return RateList.Count;
-        }
-
-        public float GetAverageOfRates()
-        {
-            if (RateList.Count == 0) { return 0; }
-            float sum = 0;
-            foreach (Rate r in RateList)
-            {
-                sum += r.Value;
-            }
-            return sum / RateList.Count;
-        }
+        
     }
 }

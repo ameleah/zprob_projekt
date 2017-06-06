@@ -5,11 +5,8 @@ using System.ComponentModel.DataAnnotations;
 namespace bookreview.Models.BaseModels
 {
 
-    public class Author
+    public class Author : Rateable
     {
-        [Key]
-        public int Id { get; private set; }
-
         [Required]
         [StringLength(60, MinimumLength = 3)]
         public string FirstName { get; private set; }
@@ -28,7 +25,7 @@ namespace bookreview.Models.BaseModels
         public DateTime UpdatedAt { get; private set; }
 
         public virtual ICollection<Book> BookList { get; private set; }
-        public List<Rate> RateList { get; private set; }
+
 
         public Author() { }
 
@@ -60,22 +57,6 @@ namespace bookreview.Models.BaseModels
         public override string ToString()
         {
             return LastName + ", " + FirstName;
-        }
-
-        public int GetNumberOfRates()
-        {
-            return RateList.Count;
-        }
-
-        public float GetAverageOfRates()
-        {
-            if (RateList.Count == 0) { return 0; }
-            float sum = 0;
-            foreach (Rate r in RateList)
-            {
-                sum += r.Value;
-            }
-            return sum / RateList.Count;
         }
 
     }
