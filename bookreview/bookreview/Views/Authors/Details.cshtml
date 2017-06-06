@@ -21,7 +21,13 @@
 {
     if (!bookreview.Models.ApplicationUser.HasRated(Model, false))
     {
-        @Html.Partial("~/Views/Rates/Create.cshtml", new bookreview.Models.BaseModels.Rate(), new ViewDataDictionary{ { "type", false }, { "id", Model.Id.ToString() } })
+        @Html.Partial("~/Views/Rates/Create.cshtml", new bookreview.Models.BaseModels.Rate(), new ViewDataDictionary { { "type", "0" }, { "id", Model.Id } })
+    }
+    else
+    {
+        <hr />
+        @("Już oceniłeś tego autora");
+        <hr />
     }
 
 }

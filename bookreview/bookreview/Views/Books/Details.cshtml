@@ -27,9 +27,6 @@
     Ilość ocen: @Model.GetNumberOfRates() <br />
     Średnia ocen: @Model.GetAverageOfRates()
 </div>
-<p class="btn btn-default">
-    @Html.ActionLink("Wróć do listy", "Index")
-</p>
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -38,8 +35,14 @@
         @Html.Partial("~/Views/Rates/Create.cshtml", new bookreview.Models.BaseModels.Rate(), new ViewDataDictionary { { "type", "1" }, { "id", Model.Id } })
     }
     else
-    {
+    { 
+        <hr />
         @("Już oceniłeś tą książkę.");
+        <hr />
     }
 
 }
+
+<p class="btn btn-default">
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>

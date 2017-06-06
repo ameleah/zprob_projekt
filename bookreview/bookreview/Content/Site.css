@@ -140,3 +140,23 @@ textarea {
     text-decoration: none;
     letter-spacing: 2px;
 }
+ 
+.rates {
+    margin: 0 15px;
+    background: #ff8989; /* Old browsers */
+    background: -moz-linear-gradient(left, #ff8989 0%, #ffff59 33%, #80ff75 66%, #7fc3ff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #ff8989 0%,#ffff59 33%,#80ff75 66%,#7fc3ff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #ff8989 0%,#ffff59 33%,#80ff75 66%,#7fc3ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8989', endColorstr='#7fc3ff',GradientType=1 ); /* IE6-9 */
+}
+.rates p.rate {
+    display: inline-block;
+    padding: 10px 0;
+    text-align: center;
+    width: 10%;
+    margin: -1px;
+}
+
+
+.rates .rate b {
+    display: block;
