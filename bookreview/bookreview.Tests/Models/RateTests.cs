@@ -15,14 +15,14 @@ namespace bookreview.Tests.Models
         [Test]
         public void AddInvalidRate()
         {
-            Assert.Throws<Exception>(new TestDelegate(() => new Rate(new ApplicationUser(),false,0,new Object())));
-            Assert.Throws<Exception>(new TestDelegate(() => new Rate(new ApplicationUser(), false, 11, new Object())));
+            Assert.Throws<Exception>(new TestDelegate(() => new Rate(new ApplicationUser(),false,0,new Book())));
+            Assert.Throws<Exception>(new TestDelegate(() => new Rate(new ApplicationUser(), false, 11, new Book())));
         }
 
         [Test]
         public void AddRateWithoutUser()
         {
-            Assert.Throws<Exception>(new TestDelegate(() => new Rate(null, false, 1, new Object())));
+            Assert.Throws<Exception>(new TestDelegate(() => new Rate(null, false, 1, new Book())));
         }
 
         [Test]
