@@ -11,16 +11,10 @@
         <div class="form-group">
             @Html.HiddenFor(model => model.EntityType, new { Value = ViewData["type"] } ) 
             @Html.HiddenFor(model => model.EntityId, new { Value = ViewData["id"] } )
-            1  @Html.RadioButtonFor(model => model.Value, "1")
-            2  @Html.RadioButtonFor(model => model.Value, "2")
-            3  @Html.RadioButtonFor(model => model.Value, "3")
-            4  @Html.RadioButtonFor(model => model.Value, "4")
-            5  @Html.RadioButtonFor(model => model.Value, "5")
-            6  @Html.RadioButtonFor(model => model.Value, "6")
-            7  @Html.RadioButtonFor(model => model.Value, "7")
-            8  @Html.RadioButtonFor(model => model.Value, "8")
-            9  @Html.RadioButtonFor(model => model.Value, "9")
-            10 @Html.RadioButtonFor(model => model.Value, "10")
+            <div class="rates">
+                <p class="rate rate-1"><b>1</b><b>@Html.RadioButtonFor(model => model.Value, "1")</b></p><p class="rate rate-2"><b>2</b><b>@Html.RadioButtonFor(model => model.Value, "2")</b></p><p class="rate rate-3"><b>3</b><b>@Html.RadioButtonFor(model => model.Value, "3")</b></p><p class="rate rate-4"><b>4</b><b>@Html.RadioButtonFor(model => model.Value, "4")</b></p><p class="rate rate-5"><b>5</b><b>@Html.RadioButtonFor(model => model.Value, "5")</b></p><p class="rate rate-6"><b>6</b><b>@Html.RadioButtonFor(model => model.Value, "6")</b></p><p class="rate rate-7"><b>7</b><b>@Html.RadioButtonFor(model => model.Value, "7")</b></p><p class="rate rate-8"><b>8</b><b>@Html.RadioButtonFor(model => model.Value, "8")</b></p><p class="rate rate-9"><b>9</b><b>@Html.RadioButtonFor(model => model.Value, "9")</b></p><p class="rate rate-10"><b>10</b><b>@Html.RadioButtonFor(model => model.Value, "10")</b></p>   
+            </div> 
+            <hr />                    
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Dodaj ocenę" class="btn btn-default" />
             </div>
