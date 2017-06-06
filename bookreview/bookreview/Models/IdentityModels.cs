@@ -21,34 +21,13 @@ namespace bookreview.Models
             return userIdentity;
         }
         
-        public static bool HasRated(Book book)
+        public static bool HasRated(Rateable entity, bool entityType)
         {
             ApplicationDbContext context = new ApplicationDbContext();
-            var rates = context.Rates.Include(r => r.User).Include(r => r.Book);
+            var rates = context.Rates.Include(r => r.User).Include(r => r.Entity);
             foreach (Rate r in rates)
             {
-                if (!r.EntityType)
-                {
-                    continue;
-                }
-                if (r.Book_Id == book.Id && r.User_Id == System.Web.HttpContext.Current.User.Identity.GetUserId())
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        public static bool HasRated(Author author)
-        {
-            ApplicationDbContext context = new ApplicationDbContext();
-            var rates = context.Rates.Include(r => r.User).Include(r => r.Author);
-            foreach (Rate r in rates)
-            {
-                if(r.EntityType)
-                {
-                    continue;
-                }
-                if (r.Author_Id == author.Id && r.User_Id == System.Web.HttpContext.Current.User.Identity.GetUserId())
+                if (r.EntityType == entityType && r.Entity_Id == entity.Id && r.User_Id == System.Web.HttpContext.Current.User.Identity.GetUserId())
                 {
                     return true;
                 }

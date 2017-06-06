@@ -18,15 +18,10 @@ namespace bookreview.Models.BaseModels
 
         public int Value { get; private set; }
 
-        public int? Book_Id { get; private set; }
-        public int? Author_Id { get; private set; }
+        public int Entity_Id { get; private set; }
         
-        [ForeignKey("Book_Id")]
-        
-        public virtual Book Book { get; private set; }
-
-        [ForeignKey("Author_Id")]
-        public virtual Author Author { get; private set; }
+        [ForeignKey("Entity_Id")]
+        public virtual Rateable Entity { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
 
@@ -36,7 +31,7 @@ namespace bookreview.Models.BaseModels
         public int EntityId { get; private set; }
 
         public Rate() { }
-        public Rate(ApplicationUser user, bool entityType, int value, Object entity)
+        public Rate(ApplicationUser user, bool entityType, int value, Rateable entity)
         {
             Author a = new Author();
             Book b = new Book();
@@ -48,17 +43,8 @@ namespace bookreview.Models.BaseModels
                 User = user;
                 EntityType = entityType;
                 Value = value;
-
-                if (entity is Author)
-                {
-                    Author = (Author)entity;
-                    EntityId = Author.Id;
-                }
-                else
-                {
-                    Book = (Book)entity;
-                    EntityId = Book.Id;
-                }
+                Entity = entity;
+                Entity_Id = entity.Id;                
                 CreatedAt = UpdatedAt = DateTime.Now;
             } else
             {

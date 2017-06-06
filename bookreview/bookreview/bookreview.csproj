@@ -383,37 +383,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705281402119_InitialCreate.cs" />
-    <Compile Include="Migrations\201705281402119_InitialCreate.Designer.cs">
-      <DependentUpon>201705281402119_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705281940154_migration1.cs" />
-    <Compile Include="Migrations\201705281940154_migration1.Designer.cs">
-      <DependentUpon>201705281940154_migration1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705282211216_BaseModels.cs" />
-    <Compile Include="Migrations\201705282211216_BaseModels.Designer.cs">
-      <DependentUpon>201705282211216_BaseModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705292004026_AddDisplayedName.cs" />
-    <Compile Include="Migrations\201705292004026_AddDisplayedName.Designer.cs">
-      <DependentUpon>201705292004026_AddDisplayedName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705301737261_validation.cs" />
-    <Compile Include="Migrations\201705301737261_validation.Designer.cs">
-      <DependentUpon>201705301737261_validation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705302144167_test.cs" />
-    <Compile Include="Migrations\201705302144167_test.Designer.cs">
-      <DependentUpon>201705302144167_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705302338332_sth.cs" />
-    <Compile Include="Migrations\201705302338332_sth.Designer.cs">
-      <DependentUpon>201705302338332_sth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705310305583_revr.cs" />
-    <Compile Include="Migrations\201705310305583_revr.Designer.cs">
-      <DependentUpon>201705310305583_revr.cs</DependentUpon>
+    <Compile Include="Migrations\201706061559521_init.cs" />
+    <Compile Include="Migrations\201706061559521_init.Designer.cs">
+      <DependentUpon>201706061559521_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -422,6 +394,7 @@
     <Compile Include="Models\BaseModels\Book.cs" />
     <Compile Include="Models\BaseModels\Category.cs" />
     <Compile Include="Models\BaseModels\Rate.cs" />
+    <Compile Include="Models\BaseModels\Rateable.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -600,29 +573,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705281402119_InitialCreate.resx">
-      <DependentUpon>201705281402119_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705281940154_migration1.resx">
-      <DependentUpon>201705281940154_migration1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705282211216_BaseModels.resx">
-      <DependentUpon>201705282211216_BaseModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705292004026_AddDisplayedName.resx">
-      <DependentUpon>201705292004026_AddDisplayedName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705301737261_validation.resx">
-      <DependentUpon>201705301737261_validation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705302144167_test.resx">
-      <DependentUpon>201705302144167_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705302338332_sth.resx">
-      <DependentUpon>201705302338332_sth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705310305583_revr.resx">
-      <DependentUpon>201705310305583_revr.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706061559521_init.resx">
+      <DependentUpon>201706061559521_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
