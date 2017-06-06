@@ -115,30 +115,33 @@ namespace bookreview.Controllers
         [HttpGet]
         public void CreatePDF()
         {
-            var doc = new Document();
-            string path = Server.MapPath("~/raport.pdf");
-            PdfWriter.GetInstance(doc, new FileStream(Server.MapPath("~/raport.pdf"), FileMode.Create));
-
-            /*
             var books = db.Books;
-            var pHTML = RenderRazorViewToString("Pdf", books);       
-            MemoryStream ms = new MemoryStream();
-            TextReader txtReader = new StringReader(pHTML);
-            Document doc = new Document(PageSize.A4, 25, 25, 25, 25);
-            PdfWriter oPdfWriter = PdfWriter.GetInstance(doc, new FileStream(Server.MapPath("~/raport.pdf"), FileMode.Create));
-            HTMLWorker htmlWorker = new HTMLWorker(doc);
+            var doc = new Document();
+            var output = new MemoryStream();
+            PdfWriter.GetInstance(doc, output);
             doc.Open();
-            FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 18, Font.BOLD);
-            var font = FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 18, Font.BOLD);
-            StyleSheet ST = new StyleSheet();
-            ST.LoadTagStyle(HtmlTags.BODY, HtmlTags.FACE, "Arial Unicode MS");
-            htmlWorker.SetStyleSheet(ST);
-            htmlWorker.StartDocument();
-            htmlWorker.Parse(txtReader);
-            htmlWorker.EndDocument();
-            htmlWorker.Close();
-            doc.Close();     
-            */
+            var font = FontFactory.GetFont(BaseFont.TIMES_ROMAN, BaseFont.CP1257, 12);
+            PdfPTable table = new PdfPTable(4);
+            PdfPCell cell = new PdfPCell(new Phrase("Lista książek",font));
+            cell.Colspan = 4;
+            cell.HorizontalAlignment = 1;
+            table.AddCell(cell);
+            table.AddCell("Nazwa");
+            table.AddCell("Autor");
+            table.AddCell("Rok wydania");
+            table.AddCell("Ocena");
+            foreach (var book in db.Books.Include(b => b.RateList))
+            {
+                table.AddCell(book.Name);
+                table.AddCell(book.Author.ToString());
+                table.AddCell(book.ReleaseDate.ToString("yyyy"));
+                table.AddCell(book.GetAverageOfRates().ToString());
+            }
+            doc.Add(table);
+            doc.Close();
+
+            Response.ContentType = "application/pdf";
+            Response.BinaryWrite(output.ToArray());
         }
     }
 }
