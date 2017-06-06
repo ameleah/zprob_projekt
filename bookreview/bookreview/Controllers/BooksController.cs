@@ -115,49 +115,30 @@ namespace bookreview.Controllers
         [HttpGet]
         public void CreatePDF()
         {
+            var doc = new Document();
+            string path = Server.MapPath("~/raport.pdf");
+            PdfWriter.GetInstance(doc, new FileStream(Server.MapPath("~/raport.pdf"), FileMode.Create));
+
+            /*
             var books = db.Books;
-            var pHTML = RenderRazorViewToString("Pdf", books);
-            
+            var pHTML = RenderRazorViewToString("Pdf", books);       
             MemoryStream ms = new MemoryStream();
-            
             TextReader txtReader = new StringReader(pHTML);
-
-            // 1: create object of a itextsharp document class
             Document doc = new Document(PageSize.A4, 25, 25, 25, 25);
-
-            // 2: we create a itextsharp pdfwriter that listens to the document and directs a XML-stream to a file
             PdfWriter oPdfWriter = PdfWriter.GetInstance(doc, new FileStream(Server.MapPath("~/raport.pdf"), FileMode.Create));
-
-
-            // 3: we create a worker parse the document
             HTMLWorker htmlWorker = new HTMLWorker(doc);
-
-            // 4: we open document and start the worker on the document
             doc.Open();
-
             FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 18, Font.BOLD);
-            // step 4.1: register a unicode font and assign it an allias
-          //  FontFactory.Register("C:\\Windows\\Fonts\\Arial.TTF", "arial unicode ms");
             var font = FontFactory.GetFont(BaseFont.COURIER, BaseFont.CP1257, 18, Font.BOLD);
-            // step 4.2: create a style sheet and set the encoding to Identity-H
             StyleSheet ST = new StyleSheet();
             ST.LoadTagStyle(HtmlTags.BODY, HtmlTags.FACE, "Arial Unicode MS");
-
-            // step 4.3: assign the style sheet to the html parser
             htmlWorker.SetStyleSheet(ST);
-
-
             htmlWorker.StartDocument();
-
-            // 5: parse the html into the document
             htmlWorker.Parse(txtReader);
-
-            // 6: close the document and the worker
             htmlWorker.EndDocument();
             htmlWorker.Close();
-            doc.Close();
-
-          //  System.IO.File.WriteAllBytes(Server.MapPath("~/raport.pdf"), ms.GetBuffer());            
+            doc.Close();     
+            */
         }
     }
 }
