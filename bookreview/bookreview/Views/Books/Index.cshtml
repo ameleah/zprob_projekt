@@ -8,33 +8,36 @@
     <div class="subsite-header">
         <h2>Książki</h2>
         <p class="options">
+            @if (User.Identity.IsAuthenticated)
+            {
             <p class="btn btn-default">@Html.ActionLink("Dodaj", "Create")</p>
             <p class="btn btn-default">@Html.ActionLink("Pobierz raport", "CreatePDF")</p>
-    </p>
+            }
+            </p>
+        </div>
     </div>
-</div>
-<div class="col-xs-12">
-    @foreach (var item in Model)
-    {
-        <div class="item-wrapper col-xs-12 col-md-4">
-            <div class="item">
-                <div class="item-title">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </div>
-                <div class="item-body">
-                    <div class="author">
-                        @Html.DisplayFor(modelItem => item.Author.LastName), @Html.DisplayFor(modelItem => item.Author.FirstName)
+    <div class="col-xs-12">
+        @foreach (var item in Model)
+        {
+            <div class="item-wrapper col-xs-12 col-md-4">
+                <div class="item">
+                    <div class="item-title">
+                        @Html.DisplayFor(modelItem => item.Name)
                     </div>
-                    <div class="item-desc">
-                        @(item.ShortText())
+                    <div class="item-body">
+                        <div class="author">
+                            @Html.DisplayFor(modelItem => item.Author.LastName), @Html.DisplayFor(modelItem => item.Author.FirstName)
+                        </div>
+                        <div class="item-desc">
+                            @(item.ShortText())
+                        </div>
                     </div>
-                </div>
-                <div class="item-footer">
-                    <span class="btn btn-default">@Html.ActionLink("Zobacz więcej", "Details", new RouteValueDictionary{ { "Id", item.Id } })</span>
+                    <div class="item-footer">
+                        <span class="btn btn-default">@Html.ActionLink("Zobacz więcej", "Details", new RouteValueDictionary { { "Id", item.Id } })</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-    }
-</div>
+        }
+    </div>

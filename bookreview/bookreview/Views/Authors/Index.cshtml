@@ -7,9 +7,12 @@
 <div class="col-xs-12">
     <div class="subsite-header">
         <h2>Autorzy</h2>
-        <p class="options">
-            @Html.ActionLink("Dodaj", "Create")
-        </p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p class="options"></p>
+            <p class="btn btn-default">@Html.ActionLink("Dodaj", "Create")</p>
+        }
+
     </div>
 </div>
 
@@ -19,7 +22,7 @@
         <div class="item-wrapper col-xs-12 col-md-4">
             <div class="item">
                 <div class="item-title">
-                   @Html.DisplayFor(modelItem => item.LastName), @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.LastName), @Html.DisplayFor(modelItem => item.FirstName)
                 </div>
                 <div class="item-body">
                     <div class="item-desc">

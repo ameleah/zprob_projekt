@@ -7,16 +7,20 @@
 <div class="col-xs-12">
     <div class="subsite-header">
         <h2>Kategorie</h2>
+@if (User.Identity.IsAuthenticated)
+{
         <p class="options">
-            @Html.ActionLink("Dodaj", "Create")
-        </p>
+
+        <p class="btn btn-default">@Html.ActionLink("Dodaj", "Create")</p>
+    </p>
+}
     </div>
 </div>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Nazwa
         </th>
         <th></th>
     </tr>
